@@ -9,6 +9,7 @@ import {
 export const FormGroup = styled.label`
   display: flex;
   gap: 10px;
+  justify-content: space-between;
 `;
 
 export const Field = styled(FormikField)`
@@ -23,4 +24,5 @@ export const ErrorMessage = styled(FormikError)`
 export const Form = styled(FormikForm)`
   display: flex;
   gap: 10px;
+  flex-direction: column;
 `;
