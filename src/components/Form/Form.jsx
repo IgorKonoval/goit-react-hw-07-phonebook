@@ -1,11 +1,10 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import toast from 'react-hot-toast';
-import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Field, FormGroup, ErrorMessage } from './Form.styled';
-import { getContacts } from '../../redux/selectors';
-import { addContact } from '../../redux/ContactsSlice';
+import { selectContacts } from '../../redux/selectors';
+import { addContact } from '../../redux/operations';
+import Notiflix from 'notiflix';
 
 const FormSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -13,11 +12,10 @@ const FormSchema = Yup.object().shape({
 });
 
 const ContactForm = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    const id = nanoid();
     const { name, number } = values;
     if (
       contacts.find(
@@ -25,9 +23,11 @@ const ContactForm = () => {
           contact.name.toLowerCase().trim() === name.toLowerCase().trim()
       )
     ) {
-      return toast.error(`${name} is already in contacts!`);
+      resetForm();
+      Notiflix.Notify.failure(`${name} is already in contacts!`);
+      return;
     }
-    dispatch(addContact({ id, name, number }));
+    dispatch(addContact({ name, number }));
     resetForm();
   };
 
