@@ -10,6 +10,7 @@ export const FormGroup = styled.label`
   display: flex;
   gap: 10px;
   justify-content: space-between;
+  flex-direction: column;
 `;
 
 export const Field = styled(FormikField)`

@@ -20,6 +20,7 @@ export const Title = styled.h1`
 export const Block = styled.div`
   display: flex;
   justify-content: space-around;
+  flex-direction: row-reverse;
 `;
 
 export const SectionTitle = styled.h2`

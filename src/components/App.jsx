@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { fetchContacts } from '../redux/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import ContactForm from './Form/Form';
 import Filter from './Filter/Filter';
 import {
   Container,
@@ -19,6 +18,7 @@ import {
   selectError,
   selectIsLoading,
 } from '../redux/selectors';
+import AddContact from './AddContact/AddContact';
 
 export const App = () => {
   const contacts = useSelector(selectContacts);
@@ -34,10 +34,7 @@ export const App = () => {
     <Container>
       <Title>Phonebook</Title>
       <Block>
-        <Section>
-          <SectionTitle>Add contact</SectionTitle>
-          <ContactForm />
-        </Section>
+        <AddContact />
         <Section>
           <SectionTitle>Contacts</SectionTitle>
           {contacts.length !== 0 ? (
