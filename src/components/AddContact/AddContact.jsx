@@ -9,4 +9,5 @@ const AddContact = () => {
     </Section>
   );
 };
+
 export default AddContact;
