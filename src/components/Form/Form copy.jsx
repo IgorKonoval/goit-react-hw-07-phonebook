@@ -11,7 +11,7 @@ const FormSchema = Yup.object().shape({
   number: Yup.string().required('Number is required'),
 });
 
-const ContactForm = ({ closeModal }) => {
+const ContactForm = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -52,14 +52,7 @@ const ContactForm = ({ closeModal }) => {
           <ErrorMessage name="number" component="span" />
         </FormGroup>
 
-        <button
-          type="submit"
-          // onClick={() => {
-          //   closeModal();
-          // }}
-        >
-          Add contact
-        </button>
+        <button type="submit">Add contact</button>
       </Form>
     </Formik>
   );
