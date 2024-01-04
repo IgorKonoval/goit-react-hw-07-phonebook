@@ -27,6 +27,7 @@ const ContactForm = ({ closeModal }) => {
       return;
     }
     dispatch(addContact({ name, number }));
+    closeModal();
     resetForm();
   };
 
@@ -52,14 +53,7 @@ const ContactForm = ({ closeModal }) => {
           <ErrorMessage name="number" component="span" />
         </FormGroup>
 
-        <button
-          type="submit"
-          // onClick={() => {
-          //   closeModal();
-          // }}
-        >
-          Add contact
-        </button>
+        <button type="submit">Add contact</button>
       </Form>
     </Formik>
   );
